@@ -1,0 +1,85 @@
+Dranges
+=======
+
+Welcome to dranges!
+
+Dranges is a small project to bring some new ranges and algorithms to D. Its main source of inspiration is 
+
+* D2 std.range and std.algorithm
+* functions/actions on sequences found in other languages, like Haskell, Clojure, Python and Scala.
+* general algorithms found anywhere: permutations, graphs spanning trees, etc.
+
+Mainly, it's a way for me to understand ranges and algorithms on sequences.
+
+Caveat
+------
+
+This is a project I didn't modify for more than a year. During this time, Phobos and DMD both got better. I'll try and clean the code here, to get rid of now-redundant functions.
+
+See also: https://github.com/dawgfoto/dranges/
+
+News
+----
+
+* December 2011: Forking from Martin Nowak's github repo
+* November, 11th, 2010: added a new module, lambda.d.
+* November, 10th, 2010: added two new modules: typepattern.d and tuplepattern.d.
+* November, 10th, 2010: completed module tupleptree.d to build, map and reduce tuple-trees.
+
+
+Modules
+-------
+
+As of this writing, dranges is divided into the following modules:
+
+* range.d, which contains new higher order ranges (drop, dropWhile, takeWhile, knit...)
+* algorithm.d, containing extensions on map/filter/reduce and some other algorithm like list comprehensions, unfold, iterate, etc.
+* phobos_extension.d, which proposes modification of std.range and std.algorithm functions: map (adding back/popBack/opIndex/length), filter (back/popBack) and some bug corrections. This module will be deprecated: the recent (2.045 and up) versions of D2 have incorporated most of the changes presented here.
+
+
+Helper modules
+--------------
+
+* traits.d, bringing some traits used by the first two modules.
+* templates.d, templates and meta-templates.
+* typetuple.d acting on type tuples
+* functional.d, also bringing some support for range and algorithm: mainly transforming functions and transforming strings into n-ary functions.
+* predicate.d, to bring together all predicates (boolean-returning functions)
+* lambda.d, a small expression template module to create anonymous functions on the fly, with arithmetic expressions.
+
+Extension modules¶
+-----------------
+
+* eager.d, eager versions of some algorithms.
+* tuple.d, functions on tuples (mapping, reducing, reversing, extracting, glueing, appending, etc.)
+* variadic.d, almost the same, but acting on variadic lists (ie T...)
+* rangeofranges.d, creating and mapping/folding on range of ranges (rank 2 or higher).
+* associative.d, to act on associatve arrays with range-like functions: filter, map, etc.
+* experiments.d, some experimentations with some not-quite-ranges.
+
+Graph and tree modules
+----------------------
+
+* recursive.d, to experiment with recursive ranges, to act on trees and graphs while conserving the 'shape' information: mapping trees, folding them, etc.
+* morphism.d, a first try to code generalization of folds/unfolds for branching/recursive structures (branching ranges, like trees and graphs, not yet added there).
+* treerange.d a small module, just for me to understand how to iterate on binary trees.
+* graph.d, a module offering a basic graph implementation. It's coming from an old code base, and will be cleanly integrated afterwards.
+* graphalgorithm.d, offering the common graph algorithm: strongly connected components, shortest path, metagraph, spanning tree, etc.
+* graphrange.d, ways to project a graph into a linear range, by depth-first or breadth-first iteration.
+* tupletree.d, a module to work with trees encoded as tuples: heterogeneous trees.
+
+Small containers
+----------------
+
+* stack.d. A small module with a basic stack, used by the graph algorithms.
+* queue.d. A small module with a basic queue, used by the graph algorithms.
+* set.d. A small module with a basic set, used by the graph algorithms.
+* binaryheap.d. A small module with a basic binary heap, used by the graph algorithms.
+* priorityqueue.d. A small module with a basic priority queue, used by the graph algorithms.
+
+Pattern modules
+---------------
+
+* patternmatch.d. Testing waters with a pattern-matching function.
+* typepattern.d. Patterns for typetuples: 'one int, then one or more double, and then anything but a float'.
+* tuplepattern.d. Same as typepattern, but for tuples: extract values when they match some type pattern.
